@@ -20,20 +20,21 @@ class AnimDemoView: UIView {
         
         backgroundColor = UIColor.whiteColor()
         
-        centerBtn = UIButton(title: "中心按钮")
+        centerBtn = UIButton(title: "Click Me")
         addSubview(centerBtn!)
         let cons = centerBtn!.ff_AlignInner(ff_AlignType.CenterCenter, referView: self, size: CGSize(width: 150, height: 150))
         
         widthConstraint = centerBtn!.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
         heightConstraint = centerBtn!.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
+        
+        centerBtn?.addTarget(self, action: "click", forControlEvents: UIControlEvents.TouchUpInside)
     }
    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
+    func click() {
         widthConstraint?.constant = 300
         heightConstraint?.constant = 300
         

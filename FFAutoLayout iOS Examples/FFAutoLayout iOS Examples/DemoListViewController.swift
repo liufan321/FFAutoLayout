@@ -16,9 +16,9 @@ struct ExampleInfo {
 class DemoListViewController: UITableViewController {
 
     lazy var exampleList: [ExampleInfo] = {
-        return [ExampleInfo(name: "对齐演示1", cls: AlignDemoView1.self),
-            ExampleInfo(name: "对齐演示2", cls: AlignDemoView2.self),
-            ExampleInfo(name: "动画演示", cls: AnimDemoView.self),
+        return [ExampleInfo(name: "Alignment Demo 1", cls: AlignDemoView1.self),
+            ExampleInfo(name: "Alignment Demo 2", cls: AlignDemoView2.self),
+            ExampleInfo(name: "Animation Demo", cls: AnimDemoView.self),
             ExampleInfo(name: "Horizontal Alignment Demo", cls: HorizontalAlignmentDemoView.self),
             ExampleInfo(name: "Vertical Alignment Demo", cls: VerticalAlignmentDemoView.self)
         ]
@@ -27,7 +27,7 @@ class DemoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "自动布局演示"
+        title = "FFAutolayout Demo"
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
