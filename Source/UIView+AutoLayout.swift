@@ -158,6 +158,8 @@ extension UIView {
     ///  - returns: 约束数组
     public func ff_HorizontalTile(views: [UIView], insets: UIEdgeInsets) -> [NSLayoutConstraint] {
         
+        assert(!views.isEmpty, "views should not be empty")
+        
         var cons = [NSLayoutConstraint]()
         
         let firstView = views[0]
@@ -187,6 +189,8 @@ extension UIView {
     ///
     ///  - returns: 约束数组
     public func ff_VerticalTile(views: [UIView], insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        
+        assert(!views.isEmpty, "views should not be empty")
         
         var cons = [NSLayoutConstraint]()
         
