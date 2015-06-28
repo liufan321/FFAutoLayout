@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		C2F069061B3F9C27002CDBB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F069051B3F9C27002CDBB8 /* AppDelegate.swift */; };
-		C2F069081B3F9C27002CDBB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F069071B3F9C27002CDBB8 /* ViewController.swift */; };
-		C2F0690B1B3F9C27002CDBB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F069091B3F9C27002CDBB8 /* Main.storyboard */; };
 		C2F0690D1B3F9C27002CDBB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2F0690C1B3F9C27002CDBB8 /* Assets.xcassets */; };
 		C2F069101B3F9C27002CDBB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F0690E1B3F9C27002CDBB8 /* LaunchScreen.storyboard */; };
 		C2F0691B1B3F9C27002CDBB8 /* FFAutoLayout_iOS_ExamplesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0691A1B3F9C27002CDBB8 /* FFAutoLayout_iOS_ExamplesTests.swift */; };
 		C2F069261B3F9C27002CDBB8 /* FFAutoLayout_iOS_ExamplesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F069251B3F9C27002CDBB8 /* FFAutoLayout_iOS_ExamplesUITests.swift */; };
+		C2F0693E1B3F9CB1002CDBB8 /* DemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F069361B3F9CB1002CDBB8 /* DemoListViewController.swift */; };
+		C2F0693F1B3F9CB1002CDBB8 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F069371B3F9CB1002CDBB8 /* DemoViewController.swift */; };
+		C2F069401B3F9CB1002CDBB8 /* AlignDemoView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F069391B3F9CB1002CDBB8 /* AlignDemoView1.swift */; };
+		C2F069411B3F9CB1002CDBB8 /* AlignDemoView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0693A1B3F9CB1002CDBB8 /* AlignDemoView2.swift */; };
+		C2F069421B3F9CB1002CDBB8 /* AnimDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0693B1B3F9CB1002CDBB8 /* AnimDemoView.swift */; };
+		C2F069431B3F9CB1002CDBB8 /* HorizontalAlignmentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0693C1B3F9CB1002CDBB8 /* HorizontalAlignmentDemoView.swift */; };
+		C2F069441B3F9CB1002CDBB8 /* VerticalAlignmentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0693D1B3F9CB1002CDBB8 /* VerticalAlignmentDemoView.swift */; };
+		C2F069461B3F9CEC002CDBB8 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F069451B3F9CEC002CDBB8 /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +42,6 @@
 /* Begin PBXFileReference section */
 		C2F069021B3F9C27002CDBB8 /* FFAutoLayout iOS Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FFAutoLayout iOS Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F069051B3F9C27002CDBB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C2F069071B3F9C27002CDBB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C2F0690A1B3F9C27002CDBB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C2F0690C1B3F9C27002CDBB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2F0690F1B3F9C27002CDBB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2F069111B3F9C27002CDBB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +51,14 @@
 		C2F069211B3F9C27002CDBB8 /* FFAutoLayout iOS ExamplesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FFAutoLayout iOS ExamplesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F069251B3F9C27002CDBB8 /* FFAutoLayout_iOS_ExamplesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFAutoLayout_iOS_ExamplesUITests.swift; sourceTree = "<group>"; };
 		C2F069271B3F9C27002CDBB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2F069361B3F9CB1002CDBB8 /* DemoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoListViewController.swift; sourceTree = "<group>"; };
+		C2F069371B3F9CB1002CDBB8 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		C2F069391B3F9CB1002CDBB8 /* AlignDemoView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignDemoView1.swift; sourceTree = "<group>"; };
+		C2F0693A1B3F9CB1002CDBB8 /* AlignDemoView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignDemoView2.swift; sourceTree = "<group>"; };
+		C2F0693B1B3F9CB1002CDBB8 /* AnimDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimDemoView.swift; sourceTree = "<group>"; };
+		C2F0693C1B3F9CB1002CDBB8 /* HorizontalAlignmentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalAlignmentDemoView.swift; sourceTree = "<group>"; };
+		C2F0693D1B3F9CB1002CDBB8 /* VerticalAlignmentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalAlignmentDemoView.swift; sourceTree = "<group>"; };
+		C2F069451B3F9CEC002CDBB8 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				C2F069051B3F9C27002CDBB8 /* AppDelegate.swift */,
-				C2F069071B3F9C27002CDBB8 /* ViewController.swift */,
-				C2F069091B3F9C27002CDBB8 /* Main.storyboard */,
+				C2F069361B3F9CB1002CDBB8 /* DemoListViewController.swift */,
+				C2F069371B3F9CB1002CDBB8 /* DemoViewController.swift */,
+				C2F069451B3F9CEC002CDBB8 /* UIButton+Extension.swift */,
+				C2F069381B3F9CB1002CDBB8 /* ExampleViews */,
 				C2F0690C1B3F9C27002CDBB8 /* Assets.xcassets */,
 				C2F0690E1B3F9C27002CDBB8 /* LaunchScreen.storyboard */,
 				C2F069111B3F9C27002CDBB8 /* Info.plist */,
@@ -123,6 +137,18 @@
 				C2F069271B3F9C27002CDBB8 /* Info.plist */,
 			);
 			path = "FFAutoLayout iOS ExamplesUITests";
+			sourceTree = "<group>";
+		};
+		C2F069381B3F9CB1002CDBB8 /* ExampleViews */ = {
+			isa = PBXGroup;
+			children = (
+				C2F069391B3F9CB1002CDBB8 /* AlignDemoView1.swift */,
+				C2F0693A1B3F9CB1002CDBB8 /* AlignDemoView2.swift */,
+				C2F0693B1B3F9CB1002CDBB8 /* AnimDemoView.swift */,
+				C2F0693C1B3F9CB1002CDBB8 /* HorizontalAlignmentDemoView.swift */,
+				C2F0693D1B3F9CB1002CDBB8 /* VerticalAlignmentDemoView.swift */,
+			);
+			path = ExampleViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +256,6 @@
 			files = (
 				C2F069101B3F9C27002CDBB8 /* LaunchScreen.storyboard in Resources */,
 				C2F0690D1B3F9C27002CDBB8 /* Assets.xcassets in Resources */,
-				C2F0690B1B3F9C27002CDBB8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +280,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F069081B3F9C27002CDBB8 /* ViewController.swift in Sources */,
+				C2F069411B3F9CB1002CDBB8 /* AlignDemoView2.swift in Sources */,
 				C2F069061B3F9C27002CDBB8 /* AppDelegate.swift in Sources */,
+				C2F0693E1B3F9CB1002CDBB8 /* DemoListViewController.swift in Sources */,
+				C2F069441B3F9CB1002CDBB8 /* VerticalAlignmentDemoView.swift in Sources */,
+				C2F069401B3F9CB1002CDBB8 /* AlignDemoView1.swift in Sources */,
+				C2F069461B3F9CEC002CDBB8 /* UIButton+Extension.swift in Sources */,
+				C2F0693F1B3F9CB1002CDBB8 /* DemoViewController.swift in Sources */,
+				C2F069421B3F9CB1002CDBB8 /* AnimDemoView.swift in Sources */,
+				C2F069431B3F9CB1002CDBB8 /* HorizontalAlignmentDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,14 +324,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C2F069091B3F9C27002CDBB8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C2F0690A1B3F9C27002CDBB8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C2F0690E1B3F9C27002CDBB8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
