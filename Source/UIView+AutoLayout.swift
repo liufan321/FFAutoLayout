@@ -119,7 +119,7 @@ extension UIView {
     ///  - Parameter offset:    偏移量，默认是 CGPoint(x: 0, y: 0)
     ///
     ///  - returns: 约束数组
-    public func ff_AlignInner(type: ff_AlignType, referView: UIView, size: CGSize?, offset: CGPoint = CGPointZero) -> [NSLayoutConstraint]  {
+    public func ff_AlignInner(type type: ff_AlignType, referView: UIView, size: CGSize?, offset: CGPoint = CGPointZero) -> [NSLayoutConstraint]  {
         
         return ff_AlignLayout(referView, attributes: type.layoutAttributes(true, isVertical: true), size: size, offset: offset)
     }
@@ -132,7 +132,7 @@ extension UIView {
     ///  - parameter offset:    偏移量，默认是 CGPoint(x: 0, y: 0)
     ///
     ///  - returns: 约束数组
-    public func ff_AlignVertical(type: ff_AlignType, referView: UIView, size: CGSize?, offset: CGPoint = CGPointZero) -> [NSLayoutConstraint] {
+    public func ff_AlignVertical(type type: ff_AlignType, referView: UIView, size: CGSize?, offset: CGPoint = CGPointZero) -> [NSLayoutConstraint] {
         
         return ff_AlignLayout(referView, attributes: type.layoutAttributes(false, isVertical: true), size: size, offset: offset)
     }
@@ -145,7 +145,7 @@ extension UIView {
     ///  - parameter offset:    偏移量，默认是 CGPoint(x: 0, y: 0)
     ///
     ///  - returns: 约束数组
-    public func ff_AlignHorizontal(type: ff_AlignType, referView: UIView, size: CGSize?, offset: CGPoint = CGPointZero) -> [NSLayoutConstraint] {
+    public func ff_AlignHorizontal(type type: ff_AlignType, referView: UIView, size: CGSize?, offset: CGPoint = CGPointZero) -> [NSLayoutConstraint] {
         
         return ff_AlignLayout(referView, attributes: type.layoutAttributes(false, isVertical: false), size: size, offset: offset)
     }
@@ -163,7 +163,7 @@ extension UIView {
         var cons = [NSLayoutConstraint]()
         
         let firstView = views[0]
-        firstView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: nil, offset: CGPoint(x: insets.left, y: insets.top))
+        firstView.ff_AlignInner(type: ff_AlignType.TopLeft, referView: self, size: nil, offset: CGPoint(x: insets.left, y: insets.top))
         cons.append(NSLayoutConstraint(item: firstView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -insets.bottom))
         
         // 添加后续视图的约束
@@ -171,7 +171,7 @@ extension UIView {
         for i in 1..<views.count {
             let subView = views[i]
             cons += subView.ff_sizeConstraints(firstView)
-            subView.ff_AlignHorizontal(ff_AlignType.TopRight, referView: preView, size: nil, offset: CGPoint(x: insets.right, y: 0))
+            subView.ff_AlignHorizontal(type: ff_AlignType.TopRight, referView: preView, size: nil, offset: CGPoint(x: insets.right, y: 0))
             preView = subView
         }
 
@@ -195,7 +195,7 @@ extension UIView {
         var cons = [NSLayoutConstraint]()
         
         let firstView = views[0]
-        firstView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: nil, offset: CGPoint(x: insets.left, y: insets.top))
+        firstView.ff_AlignInner(type: ff_AlignType.TopLeft, referView: self, size: nil, offset: CGPoint(x: insets.left, y: insets.top))
         cons.append(NSLayoutConstraint(item: firstView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -insets.right))
         
         // 添加后续视图的约束
@@ -203,7 +203,7 @@ extension UIView {
         for i in 1..<views.count {
             let subView = views[i]
             cons += subView.ff_sizeConstraints(firstView)
-            subView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: preView, size: nil, offset: CGPoint(x: 0, y: insets.bottom))
+            subView.ff_AlignVertical(type: ff_AlignType.BottomLeft, referView: preView, size: nil, offset: CGPoint(x: 0, y: insets.bottom))
             preView = subView
         }
         

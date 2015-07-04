@@ -22,7 +22,7 @@ class AnimDemoView: UIView {
         
         centerBtn = UIButton(title: "Click Me")
         addSubview(centerBtn!)
-        let cons = centerBtn!.ff_AlignInner(ff_AlignType.CenterCenter, referView: self, size: CGSize(width: 150, height: 150))
+        let cons = centerBtn!.ff_AlignInner(type: ff_AlignType.CenterCenter, referView: self, size: CGSize(width: 150, height: 150))
         
         widthConstraint = centerBtn!.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
         heightConstraint = centerBtn!.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
