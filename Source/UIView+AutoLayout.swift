@@ -349,6 +349,7 @@ extension UIView {
     :returns: 约束
     */
     private func ff_viewConstraint(attribute1: NSLayoutAttribute , equal : NSLayoutRelation , referView: UIView, attribute2:NSLayoutAttribute , multiplier : CGFloat , offset: CGFloat) -> NSLayoutConstraint {
+        assert(self.superview != nil , "视图必须添加到父视图才可设置约束")
         let attribute = self.superview != referView ? attribute2 : ff_fzattribute(attribute2)
         return ff_positionConstraint(attribute1, equal: equal, referView: referView, attribute2: attribute, multiplier: multiplier, offset: offset)
     }
