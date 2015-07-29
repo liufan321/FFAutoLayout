@@ -19,5 +19,9 @@ class DemoViewController: UIViewController {
         let demoView = exampleInfo!.cls.new() as! UIView
         view.addSubview(demoView)
         demoView.ff_Fill(view)
-    }    
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

@@ -20,7 +20,9 @@ class DemoListViewController: UITableViewController {
             ExampleInfo(name: "Alignment Demo 2", cls: AlignDemoView2.self),
             ExampleInfo(name: "Animation Demo", cls: AnimDemoView.self),
             ExampleInfo(name: "Horizontal Alignment Demo", cls: HorizontalAlignmentDemoView.self),
-            ExampleInfo(name: "Vertical Alignment Demo", cls: VerticalAlignmentDemoView.self)
+            ExampleInfo(name: "Vertical Alignment Demo", cls: VerticalAlignmentDemoView.self),
+            ExampleInfo(name: "HVAlignmentDemoView Demo", cls: HVAlignmentDemoView.self),
+            ExampleInfo(name: "WideHightAlignment Demo", cls: WideHightAlignment.self)
         ]
     }()
         

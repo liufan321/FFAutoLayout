@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		649276571B43D0A100C7E198 /* WideHightAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649276561B43D0A100C7E198 /* WideHightAlignment.swift */; };
+		64CAE96F1B410021005B695A /* HVAlignmentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAE96E1B410021005B695A /* HVAlignmentDemoView.swift */; };
 		C2F069061B3F9C27002CDBB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F069051B3F9C27002CDBB8 /* AppDelegate.swift */; };
 		C2F0690D1B3F9C27002CDBB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2F0690C1B3F9C27002CDBB8 /* Assets.xcassets */; };
 		C2F069101B3F9C27002CDBB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F0690E1B3F9C27002CDBB8 /* LaunchScreen.storyboard */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		649276561B43D0A100C7E198 /* WideHightAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WideHightAlignment.swift; sourceTree = "<group>"; };
+		64CAE96E1B410021005B695A /* HVAlignmentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HVAlignmentDemoView.swift; sourceTree = "<group>"; };
 		C2F069021B3F9C27002CDBB8 /* FFAutoLayout iOS Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FFAutoLayout iOS Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F069051B3F9C27002CDBB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2F0690C1B3F9C27002CDBB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				C2F0693B1B3F9CB1002CDBB8 /* AnimDemoView.swift */,
 				C2F0693C1B3F9CB1002CDBB8 /* HorizontalAlignmentDemoView.swift */,
 				C2F0693D1B3F9CB1002CDBB8 /* VerticalAlignmentDemoView.swift */,
+				64CAE96E1B410021005B695A /* HVAlignmentDemoView.swift */,
+				649276561B43D0A100C7E198 /* WideHightAlignment.swift */,
 			);
 			path = ExampleViews;
 			sourceTree = "<group>";
@@ -285,8 +291,10 @@
 				C2F0693E1B3F9CB1002CDBB8 /* DemoListViewController.swift in Sources */,
 				C2F069441B3F9CB1002CDBB8 /* VerticalAlignmentDemoView.swift in Sources */,
 				C2F069401B3F9CB1002CDBB8 /* AlignDemoView1.swift in Sources */,
+				649276571B43D0A100C7E198 /* WideHightAlignment.swift in Sources */,
 				C2F069461B3F9CEC002CDBB8 /* UIButton+Extension.swift in Sources */,
 				C2F0693F1B3F9CB1002CDBB8 /* DemoViewController.swift in Sources */,
+				64CAE96F1B410021005B695A /* HVAlignmentDemoView.swift in Sources */,
 				C2F069421B3F9CB1002CDBB8 /* AnimDemoView.swift in Sources */,
 				C2F069431B3F9CB1002CDBB8 /* HorizontalAlignmentDemoView.swift in Sources */,
 			);
@@ -505,6 +513,7 @@
 				C2F0692C1B3F9C27002CDBB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2F0692D1B3F9C27002CDBB8 /* Build configuration list for PBXNativeTarget "FFAutoLayout iOS ExamplesTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +522,7 @@
 				C2F0692F1B3F9C27002CDBB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2F069301B3F9C27002CDBB8 /* Build configuration list for PBXNativeTarget "FFAutoLayout iOS ExamplesUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +531,7 @@
 				C2F069321B3F9C27002CDBB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

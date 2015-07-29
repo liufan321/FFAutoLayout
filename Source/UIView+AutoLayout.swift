@@ -1,10 +1,11 @@
 //
-//  UIView+Extension.swift
+//  DemoViewController.swift
 //  FFAutoLayout
 //
 //  Created by 刘凡 on 15/6/27.
 //  Copyright © 2015年 joyios. All rights reserved.
 //
+
 
 import UIKit
 
@@ -19,6 +20,7 @@ import UIKit
 ///  - CenterLeft:   左中
 ///  - CenterRight:  右中
 ///  - CenterCenter: 中中
+
 public enum ff_AlignType {
     case TopLeft
     case TopRight
@@ -93,7 +95,6 @@ public enum ff_AlignType {
 }
 
 extension UIView {
-    
     ///  填充子视图
     ///
     ///  - parameter referView: 参考视图
@@ -231,6 +232,37 @@ extension UIView {
         return nil
     }
     
+    /**
+    与四周控件的参照关系
+    
+    :param: edgesView UIedgeView 类链表结构设置参数
+    
+    :returns: 约束数组
+    */
+    public func ff_edgesView(edgesView: UIedgeView!) -> [NSLayoutConstraint]? {
+
+        translatesAutoresizingMaskIntoConstraints = false
+        let dict = edgesView.dict
+        var cons = [NSLayoutConstraint]()
+        
+        // 遍历添加约束
+        for key in dict.allKeys {
+          let layout = dict.objectForKey(key) as! JYlayout
+         cons.append(ff_viewConstraint(layout.Attribute1!, equal: layout.Equal, referView: layout.View!, attribute2: layout.Attribute2!, multiplier: layout.Multiplier!, offset: layout.offset))
+        }
+      
+        // 看是否是指定数值的Size
+        if edgesView.esize != CGSize(width: -1 , height: -1){
+          cons += ff_sizeConstraints(edgesView.esize)
+        }
+        
+       superview!.addConstraints(cons)
+        return cons ;
+    }
+    
+    
+    
+    
     // MARK: - 私有函数
     ///  参照参考视图对齐布局
     ///
@@ -265,10 +297,13 @@ extension UIView {
     private func ff_sizeConstraints(size: CGSize) -> [NSLayoutConstraint] {
         
         var cons = [NSLayoutConstraint]()
+        if size.width >= 0 {
+            cons.append(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: size.width))
+        }
         
-        cons.append(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: size.width))
-        cons.append(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: size.height))
-        
+        if size.height >= 0{
+            cons.append(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: size.height))
+        }
         return cons
     }
     
@@ -303,6 +338,47 @@ extension UIView {
         
         return cons
     }
+    
+    /**
+    根据参考视图是否是父控件来设置约束  如果是父控件 要调整 attribute
+    
+    :param: attribute  self 的 参照属性
+    :param: referView  参照视图
+    :param: offset     偏移
+    
+    :returns: 约束
+    */
+    private func ff_viewConstraint(attribute1: NSLayoutAttribute , equal : NSLayoutRelation , referView: UIView, attribute2:NSLayoutAttribute , multiplier : CGFloat , offset: CGFloat) -> NSLayoutConstraint {
+        let attribute = self.superview != referView ? attribute2 : ff_fzattribute(attribute2)
+        return ff_positionConstraint(attribute1, equal: equal, referView: referView, attribute2: attribute, multiplier: multiplier, offset: offset)
+    }
+    
+    /**
+    调转 NSLayoutAttribute  上变下 左边右
+    */
+    private func ff_fzattribute(attribute: NSLayoutAttribute) -> NSLayoutAttribute {
+        switch attribute {
+        case NSLayoutAttribute.Top  : return  NSLayoutAttribute.Bottom
+        case NSLayoutAttribute.Left  : return  NSLayoutAttribute.Right
+        case NSLayoutAttribute.Right  : return  NSLayoutAttribute.Left
+        case NSLayoutAttribute.Bottom  : return  NSLayoutAttribute.Top
+        default : return  attribute
+        }
+    }
+    
+    /**
+    单一位置约束
+    :param: attribute1  self 的 参照属性
+    :param: referView   参照视图
+    :param: attribute2  参照属性
+    :param: offset      偏移
+    :returns: 约束
+    */
+    private func ff_positionConstraint(attribute1: NSLayoutAttribute , equal : NSLayoutRelation , referView: UIView, attribute2:NSLayoutAttribute , multiplier : CGFloat , offset: CGFloat ) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self , attribute: attribute1, relatedBy: equal, toItem: referView, attribute: attribute2 , multiplier:multiplier , constant: offset)
+    }
+
+    
 }
 
 ///  布局属性
@@ -340,4 +416,217 @@ private final class ff_LayoutAttributes {
         
         return self
     }
+    
+}
+
+
+
+// MARK:- ff_edgesView 参数设置相关类和方法
+
+let ffTop = "top"
+let ffLeft = "ffLeft"
+let ffRight = "ffRight"
+let ffBootom = "ffBootom"
+let ffCenterX = "ffCenterX"
+let ffCenterY = "ffCenterY"
+let ffHeight = "ffHeight"
+let ffWidth = "ffWidth"
+
+/// swift 貌似关于位移枚举 没啥解决方案 在网上找的 用结构体实现位移枚举
+public struct ff_tlbr  {
+    var value: UInt = 0
+    init(_ value: UInt) { self.value = value }
+    func toRaw() -> UInt { return self.value }
+    func getLogicValue() -> Bool { return self.value != 0 }
+    
+    static func fromRaw(raw: UInt) -> ff_tlbr? { return ff_tlbr(raw) }
+    static func fromMask(raw: UInt) -> ff_tlbr { return ff_tlbr(raw) }
+    
+  public  static var top : ff_tlbr   { return ff_tlbr(1 << 0) }
+  public  static var left : ff_tlbr  { return ff_tlbr(1 << 1) }
+  public  static var bottom : ff_tlbr   { return ff_tlbr(1 << 2) }
+  public  static var right : ff_tlbr   { return ff_tlbr(1 << 3) }
+  public  static var all : ff_tlbr   { return ff_tlbr(UInt.max) }
+  public  static var untop : ff_tlbr   { return ff_tlbr.left | ff_tlbr.bottom | ff_tlbr.right }
+  public  static var unleft : ff_tlbr   { return ff_tlbr.top | ff_tlbr.bottom | ff_tlbr.right }
+  public  static var unbottom : ff_tlbr   { return ff_tlbr.left | ff_tlbr.top | ff_tlbr.right }
+  public  static var unright : ff_tlbr   { return ff_tlbr.left | ff_tlbr.bottom | ff_tlbr.top }
+  
+}
+
+public func == (lhs: ff_tlbr, rhs: ff_tlbr) -> Bool     { return lhs.value == rhs.value }
+public func | (lhs: ff_tlbr, rhs: ff_tlbr) -> ff_tlbr { return ff_tlbr(lhs.value | rhs.value) }
+public func & (lhs: ff_tlbr, rhs: ff_tlbr) -> ff_tlbr { return ff_tlbr(lhs.value & rhs.value) }
+public func ^ (lhs: ff_tlbr, rhs: ff_tlbr) -> ff_tlbr { return ff_tlbr(lhs.value ^ rhs.value) }
+
+
+// 约束参数类 记录一个约束的所有参数
+private class JYlayout : NSObject {
+    var View    : UIView?
+    var Attribute1 : NSLayoutAttribute?
+    var Attribute2 : NSLayoutAttribute?
+    var Multiplier : CGFloat?
+    var Equal = NSLayoutRelation.Equal
+    var offset : CGFloat
+    
+    init(v:UIView! , c : CGFloat, a1 : NSLayoutAttribute  , a2 : NSLayoutAttribute, m : CGFloat, e : NSLayoutRelation) {
+        View = v
+        Multiplier = m
+        Attribute1 = a1
+        Attribute2 = a2
+        Equal = e
+        offset = c
+    }
+}
+
+
+// 设置需要的约束参数
+public class UIedgeView : NSObject {
+    var dict : NSMutableDictionary = NSMutableDictionary()
+    var esize = CGSize(width: -1.0 , height: -1.0)
+    
+    public func more(tlbr tlbr : ff_tlbr , v:UIView!) -> UIedgeView {
+        if tlbr & ff_tlbr.top == ff_tlbr.top { top(v , c : 0) }
+        if tlbr & ff_tlbr.left == ff_tlbr.left { left(v , c : 0)}
+        if tlbr & ff_tlbr.bottom == ff_tlbr.bottom { bottom(v , c : 0) }
+        if tlbr & ff_tlbr.right == ff_tlbr.right { right(v , c : 0) }
+        return self
+    }
+    
+    /**
+    参数描述 基本可不填
+    
+    :param: v 参考view
+    :param: c 偏移 量
+    :param: a 默认底边 如果参考View 是父控件就是 上边
+    :param: m 比例系数，默认为 1.0
+    :param: e 大于等于小于 默认 等于
+    
+    :returns: self 
+    */
+    public func top(v:UIView! , c : CGFloat , a : NSLayoutAttribute = NSLayoutAttribute.Bottom , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal) -> UIedgeView {
+        let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.Top , a2: a, m: m, e: e)
+        dict .setValue(layout, forKey: ffTop)
+        return self
+    }
+    
+    public func left(v:UIView! , c : CGFloat  , a : NSLayoutAttribute = NSLayoutAttribute.Right , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal ) -> UIedgeView {
+        let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.Left , a2: a, m: m, e: e)
+        dict .setValue(layout, forKey: ffLeft)
+        return self
+    }
+    
+    public func bottom(v:UIView! , c : CGFloat  , a : NSLayoutAttribute = NSLayoutAttribute.Top , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal ) -> UIedgeView {
+        let offset = a == NSLayoutAttribute.Top ? -c : c
+        let layout = JYlayout(v: v, c: offset, a1:NSLayoutAttribute.Bottom , a2: a, m: m, e: e)
+        dict .setValue(layout, forKey: ffBootom)
+        return self
+    }
+    
+    public func right(v:UIView! , c : CGFloat  , a : NSLayoutAttribute = NSLayoutAttribute.Left , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal) -> UIedgeView {
+        let offset = a == NSLayoutAttribute.Left ? -c : c
+        let layout = JYlayout(v: v, c: offset, a1:NSLayoutAttribute.Right , a2: a, m: m, e: e)
+        dict .setValue(layout, forKey: ffRight)
+        return self
+    }
+    
+    public func centerX(v:UIView! , c : CGFloat  , a : NSLayoutAttribute = NSLayoutAttribute.CenterX , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal) -> UIedgeView {
+        let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.CenterX , a2: a, m: m, e: e)
+        dict .setValue(layout, forKey: ffCenterX)
+        return self
+    }
+    
+    public func centerY(v:UIView! , c : CGFloat  , a : NSLayoutAttribute = NSLayoutAttribute.CenterY , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal) -> UIedgeView {
+        let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.CenterY , a2: a, m: m, e: e)
+        dict .setValue(layout, forKey: ffCenterY)
+        return self
+    }
+    
+    public func center(v:UIView! , p : CGPoint = CGPointZero ) -> UIedgeView {
+        centerX(v, c: p.x)
+        centerY(v, c: p.y)
+        return self
+    }
+    
+    public func height(v:UIView! , c : CGFloat = 0 , a : NSLayoutAttribute = NSLayoutAttribute.Height , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal) -> UIedgeView {
+        let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.Height , a2: a, m: m, e: e)
+        dict .setValue(layout, forKey: ffHeight)
+        return self
+    }
+    
+    public func width(v:UIView! , c : CGFloat = 0 , a : NSLayoutAttribute = NSLayoutAttribute.Width , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal) -> UIedgeView {
+        let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.Width , a2: a, m: m, e: e)
+        dict .setValue(layout, forKey: ffWidth)
+        return self
+    }
+    
+    public func size (v:UIView! , set : CGPoint = CGPointZero) -> UIedgeView {
+        height(v, c: set.x)
+        width(v, c: set.y)
+        return self
+    }
+    
+    public func height(h : CGFloat!) -> UIedgeView {
+        esize.height = h
+        return self
+    }
+    
+    public func width(w : CGFloat!) -> UIedgeView {
+        esize.width = w
+        return self
+    }
+    
+    public func size (size : CGSize!) -> UIedgeView {
+        esize = size
+        return self
+    }
+    
+    public func size (w : CGFloat! , h : CGFloat!) -> UIedgeView {
+        esize = CGSize(width: w, height: h)
+        return self
+    }
+    
+    /// 如果没有设置参照view 设置此参数无用
+    public func topSet(c : CGFloat) -> UIedgeView{
+       return ff_offset(ffTop, c: c)
+    }
+    
+    /// 如果没有设置参照view 设置此参数无用
+    public func leftSet(c : CGFloat) -> UIedgeView{
+       return ff_offset(ffLeft, c: c)
+
+    }
+    
+    /// 如果没有设置参照view 设置此参数无用
+    public func bottomSet(c : CGFloat) -> UIedgeView {
+       return ff_offset(ffBootom, c: c)
+    }
+    
+    /// 如果没有设置参照view 设置此参数无用
+    public func rightSet(c : CGFloat) -> UIedgeView {
+       return ff_offset(ffRight, c: c)
+    }
+    
+    private func ff_offset (s: String , c: CGFloat) -> UIedgeView {
+        let laout = dict[s] as? JYlayout
+        if laout == nil {
+            return self
+        }
+        laout!.offset = c
+        return self
+    }
+    
+    /// 如果没有设置参照view 设置此参数无用
+    public func edgeSet(t: CGFloat , l : CGFloat , b : CGFloat , r : CGFloat) -> UIedgeView{
+       return topSet(t).leftSet(l).bottomSet(b).rightSet(r)
+    }
+    
+    /// 如果没有设置参照view 设置此参数无用
+    public func edgeSet(edge : UIEdgeInsets) -> UIedgeView {
+       return edgeSet(edge.top, l: edge.left, b: edge.bottom, r: edge.right)
+    }
+    
+    
+    
+    
 }
