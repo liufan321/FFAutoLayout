@@ -10,17 +10,17 @@ import UIKit
 
 struct ExampleInfo {
     var name: String
-    var cls: AnyClass
+    var view: UIView
 }
 
 class DemoListViewController: UITableViewController {
 
     lazy var exampleList: [ExampleInfo] = {
-        return [ExampleInfo(name: "Alignment Demo 1", cls: AlignDemoView1.self),
-            ExampleInfo(name: "Alignment Demo 2", cls: AlignDemoView2.self),
-            ExampleInfo(name: "Animation Demo", cls: AnimDemoView.self),
-            ExampleInfo(name: "Horizontal Alignment Demo", cls: HorizontalAlignmentDemoView.self),
-            ExampleInfo(name: "Vertical Alignment Demo", cls: VerticalAlignmentDemoView.self)
+        return [ExampleInfo(name: "Alignment Demo 1", view: AlignDemoView1()),
+            ExampleInfo(name: "Alignment Demo 2", view: AlignDemoView2()),
+            ExampleInfo(name: "Animation Demo", view: AnimDemoView()),
+            ExampleInfo(name: "Horizontal Alignment Demo", view: HorizontalAlignmentDemoView()),
+            ExampleInfo(name: "Vertical Alignment Demo", view: VerticalAlignmentDemoView())
         ]
     }()
         

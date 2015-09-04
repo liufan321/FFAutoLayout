@@ -16,8 +16,8 @@ class DemoViewController: UIViewController {
         view = UIView()
         view.backgroundColor = UIColor.whiteColor()
         
-        let demoView = exampleInfo!.cls.new() as! UIView
+        let demoView = exampleInfo!.view
         view.addSubview(demoView)
         demoView.ff_Fill(view)
-    }    
+    }
 }
